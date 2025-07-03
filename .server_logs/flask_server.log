@@ -1,0 +1,167 @@
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3001
+ * Running on http://172.17.0.2:3001
+[33mPress CTRL+C to quit[0m
+100.64.4.167 - - [03/Jul/2025 14:44:21] "[32mHEAD /docs HTTP/1.1[0m" 308 -
+100.64.4.167 - - [03/Jul/2025 14:44:21] "[32mHEAD /docs HTTP/1.1[0m" 308 -
+100.64.4.167 - - [03/Jul/2025 14:44:21] "[32mGET /docs HTTP/1.1[0m" 308 -
+100.64.4.167 - - [03/Jul/2025 14:44:37] "[32mGET /docs HTTP/1.1[0m" 308 -
+100.64.4.167 - - [03/Jul/2025 14:44:45] "GET /docs/ HTTP/1.1" 200 -
+100.64.4.167 - - [03/Jul/2025 14:44:46] "GET /docs/openapi.json HTTP/1.1" 200 -
+100.64.4.167 - - [03/Jul/2025 14:44:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+100.64.4.167 - - [03/Jul/2025 14:44:52] "GET / HTTP/1.1" 200 -
+100.64.4.167 - - [03/Jul/2025 14:44:58] "GET /events/ HTTP/1.1" 200 -
+[2025-07-03 14:45:04,077] ERROR in app: Exception on /events/ [POST]
+Traceback (most recent call last):
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/webargs/core.py", line 657, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask_smorest/arguments.py", line 83, in wrapper
+    return func(*f_args, **f_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask_smorest/response.py", line 103, in wrapper
+    result_dump = schema.dump(result_raw)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/schema.py", line 621, in dump
+    result = self._serialize(processed_obj, many=many)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/schema.py", line 589, in _serialize
+    value = field_obj.serialize(attr_name, obj, accessor=self.get_attribute)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/fields.py", line 348, in serialize
+    return self._serialize(value, attr, obj, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/fields.py", line 1322, in _serialize
+    return format_func(value)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/utils.py", line 239, in isoformat
+    return datetime.isoformat()
+           ^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'isoformat'. Did you mean: 'format'?
+100.64.4.167 - - [03/Jul/2025 14:45:04] "[35m[1mPOST /events/ HTTP/1.1[0m" 500 -
+[2025-07-03 14:45:06,899] ERROR in app: Exception on /events/ [GET]
+Traceback (most recent call last):
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask_smorest/response.py", line 103, in wrapper
+    result_dump = schema.dump(result_raw)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/schema.py", line 621, in dump
+    result = self._serialize(processed_obj, many=many)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/schema.py", line 586, in _serialize
+    return [self._serialize(d, many=False) for d in obj]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/schema.py", line 589, in _serialize
+    value = field_obj.serialize(attr_name, obj, accessor=self.get_attribute)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/fields.py", line 348, in serialize
+    return self._serialize(value, attr, obj, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/fields.py", line 1322, in _serialize
+    return format_func(value)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/utils.py", line 239, in isoformat
+    return datetime.isoformat()
+           ^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'isoformat'. Did you mean: 'format'?
+100.64.4.167 - - [03/Jul/2025 14:45:06] "[35m[1mGET /events/ HTTP/1.1[0m" 500 -
+100.64.4.167 - - [03/Jul/2025 14:46:00] "[32mHEAD /docs HTTP/1.1[0m" 308 -
+100.64.4.167 - - [03/Jul/2025 14:46:00] "[32mHEAD /docs HTTP/1.1[0m" 308 -
+100.64.4.167 - - [03/Jul/2025 14:46:00] "[32mHEAD /docs HTTP/1.1[0m" 308 -
+100.64.4.167 - - [03/Jul/2025 14:46:00] "[32mHEAD /docs HTTP/1.1[0m" 308 -
+100.64.4.167 - - [03/Jul/2025 14:46:00] "[32mHEAD /docs HTTP/1.1[0m" 308 -
+100.64.4.167 - - [03/Jul/2025 14:46:00] "[32mHEAD /docs HTTP/1.1[0m" 308 -
+100.64.4.167 - - [03/Jul/2025 14:46:19] "GET /docs/ HTTP/1.1" 200 -
+100.64.4.167 - - [03/Jul/2025 14:46:19] "GET /docs/openapi.json HTTP/1.1" 200 -
+[2025-07-03 14:46:24,386] ERROR in app: Exception on /events/ [POST]
+Traceback (most recent call last):
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/views.py", line 110, in view
+    return current_app.ensure_sync(self.dispatch_request)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask/views.py", line 191, in dispatch_request
+    return current_app.ensure_sync(meth)(**kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/webargs/core.py", line 657, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask_smorest/arguments.py", line 83, in wrapper
+    return func(*f_args, **f_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/flask_smorest/response.py", line 103, in wrapper
+    result_dump = schema.dump(result_raw)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/schema.py", line 621, in dump
+    result = self._serialize(processed_obj, many=many)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/schema.py", line 589, in _serialize
+    value = field_obj.serialize(attr_name, obj, accessor=self.get_attribute)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/fields.py", line 348, in serialize
+    return self._serialize(value, attr, obj, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/fields.py", line 1322, in _serialize
+    return format_func(value)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/kavia/workspace/code-generation/eventmanagerapi-120389-4f3f087f/event_api_backend/venv/lib/python3.12/site-packages/marshmallow/utils.py", line 239, in isoformat
+    return datetime.isoformat()
+           ^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute 'isoformat'. Did you mean: 'format'?
+100.64.4.167 - - [03/Jul/2025 14:46:24] "[35m[1mPOST /events/ HTTP/1.1[0m" 500 -

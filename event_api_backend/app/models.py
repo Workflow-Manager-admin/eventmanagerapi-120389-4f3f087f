@@ -1,5 +1,7 @@
 from datetime import datetime
 from uuid import uuid4
+from marshmallow import ValidationError
+from dateutil.parser import parse as parse_datetime
 
 # This is a simple in-memory store for demo purposes.
 # In a real application, use a database.
@@ -11,11 +13,23 @@ class Event:
         self.id = str(uuid4())
         self.title = title
         self.description = description
-        self.start_time = start_time
-        self.end_time = end_time
+        self.start_time = self.ensure_datetime(start_time)
+        self.end_time = self.ensure_datetime(end_time)
         self.location = location
         self.created_at = datetime.utcnow()
         self.updated_at = datetime.utcnow()
+
+    @staticmethod
+    def ensure_datetime(value):
+        """
+        Ensures the value is a datetime object. If it's a string, parse it.
+        """
+        if isinstance(value, datetime):
+            return value
+        try:
+            return parse_datetime(value)
+        except Exception:
+            raise ValidationError(f"Invalid datetime value: {value}")
 
     def to_dict(self):
         return {
@@ -33,7 +47,11 @@ class Event:
         updated = False
         for key in ['title', 'description', 'start_time', 'end_time', 'location']:
             if key in data:
-                setattr(self, key, data[key])
+                val = data[key]
+                # Ensure datetime conversion for relevant fields
+                if key in ['start_time', 'end_time']:
+                    val = self.ensure_datetime(val)
+                setattr(self, key, val)
                 updated = True
         if updated:
             self.updated_at = datetime.utcnow()
